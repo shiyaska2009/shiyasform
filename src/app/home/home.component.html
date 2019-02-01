@@ -1,0 +1,31 @@
+<div class="example-container">
+  <form class="example-container" [formGroup]="createTask" (ngSubmit)="onSubmit()">
+    <mat-label> Item code</mat-label>
+    <mat-form-field>
+    <input matInput placeholder="Enter code" formControlName="itemcode">
+  </mat-form-field>
+ 
+  <mat-label> Item Name</mat-label>
+  <mat-form-field >
+  <input matInput placeholder="Enter item" formControlName="item">
+</mat-form-field>
+<br>
+<mat-label> category </mat-label>
+ 
+    <mat-select  placeholder="-- Select Category--" required   *ngIf="categories$| async as categories" (selectionChange)="onChange($event)" >
+      <mat-option>-- Select --</mat-option>
+      <mat-option *ngFor="let itm of categories" value= {{itm.catid}}>
+          {{itm.category}}
+      </mat-option>
+    </mat-select>
+   
+  
+<br>
+<mat-label> Active </mat-label>
+  <mat-checkbox formControlName="isactive"></mat-checkbox>
+<br>
+<div class="example-button-row">
+    <button mat-raised-button color="accent">Submit</button>
+</div>
+</form>
+</div>
